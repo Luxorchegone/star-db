@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    color: white;
+    margin: auto;
+    width: 450px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header ul {
+    list-style: none;
+    display: flex;
+    padding:0;
+    font-weight: 400;
+    color: greenyellow;
+}
+
+.header li {
+    display: block;
+    padding: 25px 20px;
+
+}
+.header div {
+    display: block;
+    padding: 25px 20px;
+
+}
+
+.header li:hover,
+.header li:focus{
+    background-color: rgba(255, 255, 255, 0.4);
+    
+}
