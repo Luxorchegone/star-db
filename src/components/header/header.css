@@ -1,33 +1,27 @@
 .header {
-    display: flex;
-    color: white;
-    margin: auto;
-    width: 450px;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.header ul {
+    margin-top: 10px;
+    padding-left: 10px;
+  }
+  
+  .header ul li {
     list-style: none;
-    display: flex;
-    padding:0;
-    font-weight: 400;
-    color: greenyellow;
-}
-
-.header li {
-    display: block;
-    padding: 25px 20px;
-
-}
-.header div {
-    display: block;
-    padding: 25px 20px;
-
-}
-
-.header li:hover,
-.header li:focus{
-    background-color: rgba(255, 255, 255, 0.4);
-    
-}
+    margin: 0;
+    padding: 7px 15px;
+    border-radius: 3px;
+  }
+  
+  .header ul li:hover {
+    background-color: #444;
+  }
+  
+  .header a:hover {
+    text-decoration: none;
+  }
+  
+  .header h3 a {
+    color: white;
+  }
+  
+  .header h3 a:hover {
+    color: #00bc8c;
+  }
