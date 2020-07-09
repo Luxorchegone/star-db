@@ -28,7 +28,7 @@ export default class RandomPlanet extends Component {
     .then ((planet) => {
       this.setState ({
         name: planet.name,
-        population: planet.planet,
+        population: planet.population,
         rotationPeriod: planet.rotation_period,
         diameter: planet.diameter,
         id,
