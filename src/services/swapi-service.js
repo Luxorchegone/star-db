@@ -6,38 +6,40 @@ export default class SwapiService {
 
     if (!res.ok) {
       throw new Error(`Could not fetch ${url} , received ${res.status}`);
-    };
+    }
 
     return await res.json();
-  };
+  }
 
   async getAllPeople() {
     const res = await this.getResourse(`/people/`);
-    return res.results;
-  };
+    return res.results.map(this._transformPerson);
+  }
 
-  getPerson(id) {
-    return this.getResourse(`/people/${id}/`);
-  };
+  async getPerson(id) {
+    const person = await this.getResourse(`/people/${id}/`);
+    return this._transformPerson(person);
+  }
 
   async getAllPlanets() {
     const res = await this.getResourse(`/planets/`);
     return res.results.map(this._transformPlanet);
-  };
+  }
 
   async getPlanet(id) {
     const planet = await this.getResourse(`/planets/${id}/`);
     return this._transformPlanet(planet);
-  };
+  }
 
   async getAllStarships() {
     const res = await this.getResourse(`/starships/`);
-    return res.results;
-  };
+    return res.results.map(this._transformStarship);
+  }
 
-  getStarship(id) {
-    return this.getResourse(`/starships/${id}/`);
-  };
+  async getStarship(id) {
+    const starship = await this.getResourse(`/starships/${id}/`);
+    return this._transformStarship(starship);
+  }
 
   _extractId(item) {
     const isRegExp = /\/([0-9]*)\/$/;
@@ -51,7 +53,33 @@ export default class SwapiService {
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter,
-    };
-  };
-};
+    }
+  }
 
+  _transformPerson(person) {
+    return {
+      id: this._extractId(person),
+      name: person.name,
+      height: person.height,
+      mass: person.mass,
+      hairColor: person.hair_color,
+      eyeColor: person.eye_color,
+      gender: person.gender,
+      birthYear: person.birthYear,
+    }
+  }
+
+  _transformStarship(starship) {
+    return {
+      id: this._extractId(starship),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.costInCredits,
+      length: starship.length,
+      crew: starship.crew,
+      passengers: starship.passengers,
+      cargoCapacity: starship.cargoCapacity,
+    }
+  }
+}
