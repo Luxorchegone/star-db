@@ -1,0 +1,28 @@
+.item-details {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border: 1px solid #444; 
+}
+  
+.item-details .item-image {
+    width: 174px;
+    height: 100%;
+    border-radius: 10px;
+}
+  
+.item-details .list-group-item {
+    padding: 4px;
+}
+  
+.item-details .list-group-item .term{
+    margin-right: 6px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.item-image {
+    margin-right: 10px;
+}
