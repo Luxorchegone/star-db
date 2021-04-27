@@ -1,5 +1,6 @@
 export default class SwapiService {
-    _apiBase = "https://swapi.dev/api"; //'База' нашей апишки
+    _apiBase = 'https://swapi.dev/api'; //'База' нашей апишки
+    _imgBase = 'https://starwars-visualguide.com/assets/img/';//'База' апишки c изображениями
 
     getResourse = async (url) => { //Получем json с интересующими нас данными или ошибку, если что то пошло не так
         const res = await fetch(`${this._apiBase}${url}`);
@@ -37,6 +38,19 @@ export default class SwapiService {
     getStarship = async (id) => { //Получаем корабль и преобразуем его в удобный формат
         const starship = await this.getResourse(`/starships/${id}/`);
         return this._transformStarship(starship);
+    }
+
+
+    getPersonImage = ({id}) => {
+        return `${this._imgBase}characters/${id}.jpg`
+    }
+
+    getStarshipImage = ({id}) => {
+        return `${this._imgBase}starships/${id}.jpg`
+    }
+
+    getPlanetImage = ({id}) => {
+        return `${this._imgBase}planets/${id}.jpg`
     }
 
     _extractId = (item) => { //Достаем id из строки
