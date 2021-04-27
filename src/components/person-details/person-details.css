@@ -2,27 +2,27 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
-    border: 1px solid #444;
-    
-  }
+    border: 1px solid #444; 
+}
   
-  .person-details .person-image {
+.person-details .person-image {
     width: 174px;
     height: auto;
     border-radius: 10px;
-  }
+}
   
-  .person-details .list-group-item {
+.person-details .list-group-item {
     padding: 4px;
-  }
+}
   
-  .person-details .list-group-item .term{
+.person-details .list-group-item .term{
     margin-right: 6px;
-  }
+}
 
-  .card-body {
+.card-body {
     padding: 10px;
-  }
-  .person-image {
+}
+
+.person-image {
     margin-right: 10px;
-  }
+}

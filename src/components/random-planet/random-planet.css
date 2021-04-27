@@ -2,25 +2,25 @@
     display: flex;
     padding: 10px;
     border: 1px solid #444;
-  }
+}
   
-  .random-planet .planet-image {
+.random-planet .planet-image {
     width: 150px;
     height: 150px;
     border-radius: 10px;
     margin-right: 10px;
-  }
+}
   
-  .planet-description {
+.planet-description {
     padding: 10px;
-  }
+}
   
-  .random-planet .list-group-item {
+.random-planet .list-group-item {
     padding: 4px;
-  }
+}
   
-  .random-planet .list-group-item .term {
+.random-planet .list-group-item .term {
     margin-right: 6px;
-  }
+}
 
   
