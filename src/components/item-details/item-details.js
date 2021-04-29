@@ -3,6 +3,17 @@ import SwapiService from "../../services/swapi-service";
 import Spinner from "../spinner";
 import "./item-details.css";
 
+const Record = ({item, field, label}) => {
+    return (
+        <li className="list-group-item">
+            <span className="term">{label}</span>
+            <span>{item[field]}</span>
+        </li>
+    );
+} 
+
+export {Record};
+
 export default class ItemDetails extends Component {
   swappiService = new SwapiService();
 
@@ -46,19 +57,34 @@ export default class ItemDetails extends Component {
         if (this.state.error) { //почистить 
             this.foo.bar = 0;
         }
-
-        if (!this.state.item && !this.state.loading) {
-            return <span>Select a item from a list </span>;
-        }
         
         const {item, loading, image} = this.state;
-        const spinner = loading ? <Spinner /> : null;
-        const content = !loading ? <ItemCard item={item} image={image} /> : null;
+
+        if (!item && !loading) {
+            return <span>Select a item from a list </span>;
+        }      
+
+        if (loading) {
+            return <Spinner/>
+        }
+        
+        const {name} = item;
 
         return (
             <div className="item-details card">
-                {spinner}
-                {content}
+                <img className="item-image"
+                    src={image}
+                    alt="item"/>
+                <div className="card-body">
+                    <h4>{name}</h4>
+                    <ul className="list-group list-group-flush">
+                        {
+                            React.Children.map(this.props.children, (child) => {
+                                return React.cloneElement(child, {item});
+                            })
+                        }
+                    </ul>
+                </div>
                 <button onClick={()=>this.setState({error: true})}>
                     Выкинуть ошибку!
                 </button>
@@ -67,52 +93,19 @@ export default class ItemDetails extends Component {
     }
 }
 
-const ItemCard = ({item, image}) => {
-    const {
-        id,
-        name,
-        height,
-        mass,
-        hairColor,
-        eyeColor,
-        gender,
-        birthYear,
-    } = item;
+// const ItemCard = ({item, image, children}) => {
+//     const {
+//         id,
+//         name,
+//         height,
+//         mass,
+//         hairColor,
+//         eyeColor,
+//         gender,
+//         birthYear,
+//     } = item;
     
-    return (
-        <>
-            <img className="item-image"
-                src={image}
-                alt="item"/>
-            <div className="card-body">
-                <h4>{name}</h4>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                        <span className="term">Gender</span>
-                        <span>{gender}</span>
-                    </li>
-                    <li className="list-group-item">
-                        <span className="term">Birth Year</span>
-                        <span>{birthYear}</span>
-                    </li>
-                    <li className="list-group-item">
-                        <span className="term">Eye Color</span>
-                        <span>{eyeColor}</span>
-                    </li>
-                    <li className="list-group-item">
-                        <span className="term">Hair Color</span>
-                        <span>{hairColor}</span>
-                    </li>
-                    <li className="list-group-item">
-                        <span className="term">Height</span>
-                        <span>{height}</span>
-                    </li>
-                    <li className="list-group-item">
-                        <span className="term">Mass</span>
-                        <span>{mass}</span>
-                    </li>
-                </ul>
-            </div>
-        </>
-  );
-}
+//     return (
+        
+//   );
+// }
