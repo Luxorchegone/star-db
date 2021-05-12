@@ -1,6 +1,4 @@
-import React, {Component} from "react";
-import SwapiService from "../../services/swapi-service";
-import {withData} from "../hoc-helper";
+import React from "react";
 import "./item-list.css";
 
 const ItemList = (props) => { //Функция отвечающая за отрисовку компонента
@@ -27,6 +25,4 @@ const ItemList = (props) => { //Функция отвечающая за отр�
         </ul>
     );
 }
-
-const {getAllStarships} = new SwapiService();
-export default withData(ItemList, getAllStarships);
+export default ItemList;
