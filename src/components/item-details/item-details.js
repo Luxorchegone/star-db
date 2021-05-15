@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import SwapiService from "../../services/swapi-service";
 import Spinner from "../spinner";
 import "./item-details.css";
 
@@ -15,7 +14,6 @@ const Record = ({item, field, label}) => {
 export {Record};
 
 export default class ItemDetails extends Component {
-  swappiService = new SwapiService();
 
     state = {
         item: null,
@@ -28,7 +26,9 @@ export default class ItemDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.itemId !== prevProps.itemId) {
+        if (this.props.itemId !== prevProps.itemId ||
+            this.props.getData !== prevProps.getData ||
+            this.props.getImageUrl !== prevProps.getImageUrl) {
             this.updateItem();
         }
     }
@@ -92,20 +92,3 @@ export default class ItemDetails extends Component {
         );
     }
 }
-
-// const ItemCard = ({item, image, children}) => {
-//     const {
-//         id,
-//         name,
-//         height,
-//         mass,
-//         hairColor,
-//         eyeColor,
-//         gender,
-//         birthYear,
-//     } = item;
-    
-//     return (
-        
-//   );
-// }
