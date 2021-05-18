@@ -1,21 +1,31 @@
 import React, {Component} from 'react';
 import Spinner from "../spinner";
-import ErrorIndicator from "../error-indicator";
 
-const withData = (View, getData) => {//Функция отвечающая за логику компонента
+const withData = (View) => {//Функция отвечающая за логику компонента
     return class extends Component {
         state = {
             data: null,
+            loading: false,
+            error: false
         }
     
-        onItemsLoaded = (data) => { //Пишем в стейт
-            this.setState({
-               data: data,
-            });
+        update = () => { //Получаем данные и пишем их в стейт
+            this.props.getData()
+                .then((data) => {
+                    this.setState({
+                        data: data,
+                    });
+                });
         }
      
         componentDidMount() { //Получаем данные с сервера и пишем в стейт
-            getData().then(this.onItemsLoaded);
+            this.update();
+        }
+        
+        componentDidUpdate(prevProps) {
+            if (this.props.getData !== prevProps.getData) {
+                this.update();
+            }
         }
 
         render() {
