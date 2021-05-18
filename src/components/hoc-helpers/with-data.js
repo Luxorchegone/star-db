@@ -1,19 +1,31 @@
 import React, {Component} from 'react';
-import Spinner from "../spinner";
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 const withData = (View) => {//Функция отвечающая за логику компонента
     return class extends Component {
         state = {
             data: null,
-            loading: false,
-            error: false
+            loading: true,
+            error: false,
         }
     
-        update = () => { //Получаем данные и пишем их в стейт
-            this.props.getData()
-                .then((data) => {
+        update = () => { 
+            this.setState({ //"Начинаем" загрузку данных с сервера
+                loading: true,
+            });
+           
+            this.props.getData() 
+                .then((data) => { //Получаем данные с сервера и пишем в стейт
                     this.setState({
                         data: data,
+                        loading: false,
+                    });
+                })
+                .catch(() => {
+                    this.setState({ //Если что то пошло не так... То выбросим ошибку!
+                        error: true,
+                        loading: false,
                     });
                 });
         }
@@ -29,10 +41,14 @@ const withData = (View) => {//Функция отвечающая за логи�
         }
 
         render() {
-            const {data} = this.state;
+            const {data, error, loading} = this.state;
 
-            if (!data) {
+            if (loading) {
                 return <Spinner />;
+            }
+
+            if (error) {
+                return <ErrorIndicator/>
             }
 
             return <View {...this.props} data={data}/>; //Возвращаем наш компонент и отдаем ему данные, полученные ранее с сервера
