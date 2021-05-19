@@ -1,7 +1,7 @@
-import React from "react";
-import "./spinner.css";
+import React from 'react';
+import './spinner.css';
 
-const Spinner = () => {
+const Spinner = () => { //Спиннер - индикатор загрузки
     return (
         <div className="centering">
             <div className="loadingio-spinner-double-ring-oh1limad8h">
@@ -17,6 +17,6 @@ const Spinner = () => {
                 </div>
             </div>
         </div>
-  );
+    );
 }
 export default Spinner;
