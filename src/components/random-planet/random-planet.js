@@ -1,43 +1,49 @@
-import React, {Component} from "react";
-import SwapiService from "../../services/swapi-service";
-import Spinner from "../spinner";
-import ErrorIndicator from "../error-indicator";
-import "./random-planet.css";
+import React, {Component} from 'react';
+import SwapiService from '../../services/swapi-service';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
+import PropTypes from 'prop-types';
+import './random-planet.css';
 
-export default class RandomPlanet extends Component {
-    swappiService = new SwapiService();
+export default class RandomPlanet extends Component { //Компонент отображающий, рандомную планету
+    swapiService = new SwapiService();
 
     state = {
-        planet: {},
+        planet: null,
         loading: true,
+        error: false,
+    }
+
+    static defaultProps = { //Интервал обновления по умолчанию
+        updateInterval: 7000,
+    }
+    
+    static propTypes = { //Пробуем библиотеку Proptypes
+        updateInterval: PropTypes.number 
+    }
+
+    updatePlanet = () => { 
+        const id = Math.floor(Math.random() * 58) + 2; //Генерим рандомный id планеты
+        
+        this.swapiService.getPlanet(id) 
+            .then((planet) => { //Получаем данные с сервера и пишем в стейт
+                this.setState({
+                    planet: planet,
+                    loading: false,
+                });
+            })
+            .catch(() => {
+                this.setState({ //Если что то пошло не так... То выбросим ошибку!
+                    error: true,
+                    loading: false,
+                });
+            });
     }
 
     componentDidMount() {
+        const {updateInterval} = this.props;
         this.updatePlanet();
-        this.interval = setInterval(this.updatePlanet, 7000);
-    }
-
-    onPlanetLoaded = (planet) => {
-        this.setState({
-            planet,
-            loading: false,
-            error: false,
-        });
-    }
-
-    onError = (err) => {
-        this.setState({
-            loading: false,
-            error: true,
-        });
-    }
-
-    updatePlanet = () => {
-        const id = Math.floor(Math.random() * 58) + 2;
-        this.swappiService
-            .getPlanet(id)
-            .then(this.onPlanetLoaded)
-            .catch(this.onError);
+        this.interval = setInterval(this.updatePlanet, updateInterval);
     }
 
     render() {
@@ -57,9 +63,9 @@ export default class RandomPlanet extends Component {
     }
 }
 
-const Planet = ({planet}) => {
+const Planet = ({planet}) => { //Визуальный "скелет" для отображжения данных о планете
     const { population, rotationPeriod, diameter, name, id } = planet;
-
+    
     return (
         <>
             <img className="planet-image"
