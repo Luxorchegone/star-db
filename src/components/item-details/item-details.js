@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import Spinner from "../spinner";
-import "./item-details.css";
+import React, {Component} from 'react';
+import Spinner from '../spinner';
+import './item-details.css';
 
 const Record = ({item, field, label}) => {
     return (
@@ -53,11 +53,7 @@ export default class ItemDetails extends Component {
         });
     }
 
-    render() {
-        if (this.state.error) { //почистить 
-            this.foo.bar = 0;
-        }
-        
+    render() {       
         const {item, loading, image} = this.state;
 
         if (!item && !loading) {
@@ -85,9 +81,6 @@ export default class ItemDetails extends Component {
                         }
                     </ul>
                 </div>
-                <button onClick={()=>this.setState({error: true})}>
-                    Выкинуть ошибку!
-                </button>
             </div>
         );
     }
