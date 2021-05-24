@@ -70,6 +70,7 @@ const Planet = ({planet}) => { //Визуальный "скелет" для от
         <>
             <img className="planet-image"
                 src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} // т.к. в основной APIшке нет изображений
+                alt="Planet"
             />
             <div className="planet-description">
                 <h4 className="planet-name">{name}</h4>
