@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ErrorIndicator from "../error-indicator";
+import ErrorIndicator from '../error-indicator';
 
 export default class ErrorBoundary extends Component { //Компонент обертка
     state ={
@@ -13,7 +13,6 @@ export default class ErrorBoundary extends Component { //Компонент об
     }
     
     render() {
-
         if (this.state.error) { //Если обернутый компонент выкинул ошибку, покажем вместо него ErrorIndicator
             return <ErrorIndicator />
         }
