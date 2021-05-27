@@ -2,7 +2,7 @@ import React from 'react';
 import ItemDetails, {Record} from '../item-details';
 import {withSwapiService} from '../hoc-helpers';
 
-const PersonDetails = (props) => {
+const PersonDetails = (props) => { //Компонент-описание персонажа
     return (
         <ItemDetails 
             {...props}>
@@ -16,7 +16,7 @@ const PersonDetails = (props) => {
     );
 }
 
-const mapMethodsToProps = (swapiService) => {
+const mapMethodsToProps = (swapiService) => {  //Переименовываем сервисы для унификации
     return {
         getData: swapiService.getPerson,
         getImageUrl: swapiService.getPersonImage

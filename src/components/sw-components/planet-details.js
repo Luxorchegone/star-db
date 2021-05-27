@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import ItemDetails, {Record} from '../item-details';
 import {withSwapiService} from '../hoc-helpers';
 
-const PlanetDetails = (props) => {
+const PlanetDetails = (props) => { //Компонент-описание планеты
     return (
         <ItemDetails 
             {...props}>
@@ -13,7 +13,7 @@ const PlanetDetails = (props) => {
     );
 }
 
-const mapMethodsToProps = (swapiService) => {
+const mapMethodsToProps = (swapiService) => { //Переименовываем сервисы для унификации
     return {
         getData: swapiService.getPlanet,
         getImageUrl: swapiService.getPlanetImage
