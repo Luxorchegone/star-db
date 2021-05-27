@@ -92,7 +92,7 @@ export default class DummySwapiService {
             manufacturer: `ПРОИЗВОДИТЕЛЬ ТЕСТОВЫЙ!!!`,
             costInCredits: `СТОИМОСТЬ ТЕСТОВЫЙ!!!`,
             length: `ДЛИНА ТЕСТОВЫЙ!!!`,
-            crew: `КОМАНДАТЕСТОВЫЙ!!!`,
+            crew: `КОМАНДА ТЕСТОВЫЙ!!!`,
             passengers: `ПАССАЖИРЫ ТЕСТОВЫЙ!!!`,
             cargoCapacity: `ТЕСТОВЫЙ!!!`,
         }
