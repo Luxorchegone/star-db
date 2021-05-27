@@ -3,7 +3,7 @@ import Row from '../row/';
 import {PersonDetails, PersonList} from '../sw-components';
 import {withRouter} from 'react-router-dom';
 
-const PeoplePage = ({history, match}) => {
+const PeoplePage = ({history, match}) => { //Компонент со списком персонажей и их описанием
     const {id} = match.params;    
     return (
         <Row 
