@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginPage = ({isLoggedIn, onLogin}) => {
+const LoginPage = ({isLoggedIn, onLogin}) => { //Имитация компонента логина 
     let btnText = isLoggedIn ? 'Log out' : 'Log in';
 
     return (
