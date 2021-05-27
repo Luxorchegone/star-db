@@ -38,5 +38,4 @@ ItemList.propTypes = { //пробуем Proptypes
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
     children: PropTypes.func.isRequired,
 }
-
 export default ItemList;
