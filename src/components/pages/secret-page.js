@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';  
 
-const SecretPage = ({isLoggedIn}) => {
+const SecretPage = ({isLoggedIn}) => { //"Секретная" страница, не доступная если пользователь не залогинился
     if(isLoggedIn) {
         return (
             <div className="jumbotron text-center">
@@ -9,6 +9,6 @@ const SecretPage = ({isLoggedIn}) => {
             </div>
         );
     }
-    return <Redirect to="/login" />
+    return <Redirect to="/login" /> //Редирект, если пользователь не залогинился
 }
 export default SecretPage;
