@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './header.css';
 
-const Header = ({onServiceChange}) => { //'Шапка' нашего приложения
+const Header = ({onServiceChange, serviceButtonLabel}) => { //'Шапка' нашего приложения
     return (
         <div className="header d-flex">
             <h3>
@@ -27,8 +27,8 @@ const Header = ({onServiceChange}) => { //'Шапка' нашего прилож
             </ul>
             <button 
                 onClick={onServiceChange}
-                className="dtn btn-primary btn-sm">
-                Change Service
+                className="btn btn-primary btn-sm">
+                {serviceButtonLabel}
             </button>
         </div>
     );          
