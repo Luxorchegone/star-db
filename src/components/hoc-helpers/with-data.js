@@ -55,5 +55,4 @@ const withData = (View) => {//Функция отвечающая за логи�
         }
     }
 }
-
 export default withData;
